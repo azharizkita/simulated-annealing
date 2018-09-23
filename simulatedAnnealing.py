@@ -15,18 +15,22 @@ def randomState(a, b):
         return randomState(a, b)
 
 while (t > 0.01):
-    a, b = randomState(x1, x2)
-    hasil = - math.fabs( math.sin(a) * math.cos(b) * math.exp(math.fabs( 1 - ( math.sqrt( (a*a) + (b*b) ) / 3.14 ) ) ) )
-    if best > hasil:
-        x1 = a
-        x2 = b
-        best = hasil        
-    elif(math.exp( (best - hasil) / t ) > random.random()):
-        x1 = a
-        x2 = b
-        best = hasil
-    print()
-    print("Nilai X1: ",x1)
-    print("Nilai X2: ",x2)
-    print("Nilai minimum: ",best)
-    t = alpha*t
+    i = 0
+    while (i < 1000):
+        a, b = randomState(x1, x2)
+        hasil = - math.fabs( math.sin(a) * math.cos(b) * math.exp(math.fabs( 1 - ( math.sqrt( (a*a) + (b*b) ) / 3.14 ) ) ) )
+        if best > hasil:
+            x1 = a
+            x2 = b
+            best = hasil        
+        elif(math.exp( (best - hasil) / t ) > random.random()):
+            x1 = a
+            x2 = b
+            best = hasil
+        t = alpha*t
+        i = i + 1
+    
+print("Nilai X1: ",x1)
+print("Nilai X2: ",x2)
+print("Nilai minimum: ",best)
+input("Press any key to exit...")
